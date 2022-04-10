@@ -11,10 +11,10 @@ export default function AgendaComponent() {
             // the value of date key has to be an empty array []. If there exists no value for date key it is
             // considered that the date in question is not yet loaded
             items={{
-                '2022-04-22': [{ name: 'item 1 - any js object' }],
-                '2022-04-23': [{ name: 'item 2 - any js object', height: 80 }],
-                '2022-04-24': [],
-                '2022-04-25': [{ name: 'item 3 - any js object' }, { name: 'any js object' }]
+                '2022-04-09': [{ name: 'item 1 - any js object'}],
+                '2022-04-10': [{ name: 'item 2 - any js object', height: 80 }],
+                '2022-04-11': [],
+                '2022-04-12': [{ name: 'item 3 - any js object' }, { name: 'any js object' }],
             }}
             // Callback that gets called when items for a certain month should be loaded (month became visible)
             loadItemsForMonth={month => {
@@ -30,7 +30,7 @@ export default function AgendaComponent() {
             }}
             // Callback that gets called when day changes while scrolling agenda list
             onDayChange={day => {
-                console.log('day changed');
+                console.log(day);
             }}
             // Initially selected day
             selected={'2022-04-09'}
@@ -50,9 +50,8 @@ export default function AgendaComponent() {
             }}
             // Specify how each date should be rendered. day can be undefined if the item is not first in that day
             renderDay={(day, item) => {
-                return <View>
-                    <Text fontSize="3xl">3xl</Text>
-                </View>;
+                const d = day != undefined ? day.toString("dd") : 69;
+                return <Date day={d}/>
             }}
             // Specify how empty date content with no items should be rendered
             renderEmptyDate={() => {
