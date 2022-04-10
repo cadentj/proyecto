@@ -3,13 +3,20 @@ import { StyleSheet, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import MyTabs from './components/BottomNavBar';
 
-import { NativeBaseProvider, Text, Box } from 'native-base';
+import { NativeBaseProvider, Text, Box, extendTheme } from 'native-base';
+
 
 
 export default function App() {
+  const theme = extendTheme({
+    config: {
+      // Changing initialColorMode to 'dark'
+      initialColorMode: 'dark',
+    },
+  });
   return (
-    <NativeBaseProvider>
-      <NavigationContainer>
+    <NativeBaseProvider theme={theme}>
+      <NavigationContainer theme={theme} >
         <MyTabs />
       </NavigationContainer>
     </NativeBaseProvider>

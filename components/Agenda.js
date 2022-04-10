@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Text, View } from 'react-native';
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
-import Schedule from './AgendaSchedule';
+import Event from './AgendaSchedule/AgendaEvent';
+import Date from './AgendaSchedule/AgendaDate';
 
 export default function AgendaComponent() {
     return (
@@ -44,7 +45,7 @@ export default function AgendaComponent() {
             // Specify how each item should be rendered in agenda
             renderItem={(item, firstItemInDay) => {
                 return <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                    <Schedule />
+                    <Event name={item.name}/>
                 </View>;
             }}
             // Specify how each date should be rendered. day can be undefined if the item is not first in that day
