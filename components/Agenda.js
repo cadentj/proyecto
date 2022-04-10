@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Text, View } from 'react-native';
-import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
-import { ThemeProvider, Button, createTheme } from '@rneui/themed';
+import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
+import Schedule from './AgendaSchedule';
 
 export default function AgendaComponent() {
     return (
@@ -43,12 +43,14 @@ export default function AgendaComponent() {
             futureScrollRange={2}
             // Specify how each item should be rendered in agenda
             renderItem={(item, firstItemInDay) => {
-                return <View />;
+                return <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                    <Schedule />
+                </View>;
             }}
             // Specify how each date should be rendered. day can be undefined if the item is not first in that day
             renderDay={(day, item) => {
-                return <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                    <Text>Empty</Text>
+                return <View>
+                    <Text fontSize="3xl">3xl</Text>
                 </View>;
             }}
             // Specify how empty date content with no items should be rendered
@@ -60,7 +62,7 @@ export default function AgendaComponent() {
                 return <View />;
             }}
             // Specify what should be rendered instead of ActivityIndicator
-            
+
             renderEmptyData={() => {
                 return <View />;
             }}
@@ -88,20 +90,13 @@ export default function AgendaComponent() {
             refreshControl={null}
             // Agenda theme
             theme={{
-                myTheme
+                agendaDayTextColor: 'yellow',
+                agendaDayNumColor: 'green',
+                agendaTodayColor: 'red',
+                agendaKnobColor: 'blue'
             }}
             // Agenda container style
             style={{}}
         />
     );
 }
-
-const myTheme = createTheme({
-    lightColors: {
-      primary: '#f2f2f2',
-    },
-    darkColors: {
-      primary: '#121212',
-    },
-    mode: 'dark',
-  });
