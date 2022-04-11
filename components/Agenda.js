@@ -96,10 +96,12 @@ export default function AgendaComponent() {
 
             markingType={'multi-dot'}
             markedDates={{
-                '2022-04-08': { dots: [seven] },
-                '2022-04-16': { dots: [one] },
-                '2022-04-17': { dots: [two] },
-                '2022-04-18': { disabled: true }
+                '2022-04-11': { dots: [six] },
+                '2022-04-12': { dots: [seven] },
+                '2022-04-13': { dots: [one] },
+                '2022-04-14': { dots: [two] },
+                '2022-04-15': { dots: [three] },
+                '2022-04-16': { disabled: true }
             }}
             // If disabledByDefault={true} dates flagged as not disabled will be enabled. Default = false
             disabledByDefault={false}
