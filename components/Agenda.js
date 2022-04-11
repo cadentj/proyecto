@@ -4,6 +4,14 @@ import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import Event from './AgendaSchedule/AgendaEvent';
 import Date from './AgendaSchedule/AgendaDate';
 
+const one = {key: 'seven', color: 'red', day:1};
+const two = {key: 'seven', color: 'red', day:2};
+const three = {key: 'seven', color: 'red', day:3};
+const four = {key: 'seven', color: 'red', day:4};
+const five = {key: 'seven', color: 'red', day:5};
+const six = {key: 'seven', color: 'red', day:6};
+const seven = {key: 'seven', color: 'red', day:7};
+
 export default function AgendaComponent() {
     return (
         <Agenda
@@ -75,9 +83,12 @@ export default function AgendaComponent() {
             // When `true` and `hideKnob` prop is `false`, the knob will always be visible and the user will be able to drag the knob up and close the calendar. Default = false
             showClosingKnob={true}
             // By default, agenda dates are marked if they have at least one item, but you can override this if needed
+
+            markingType={'multi-dot'}
             markedDates={{
-                '2022-04-16': { selected: true, marked: true },
-                '2022-04-17': { marked: true },
+                '2022-04-08': { dots: [seven] },
+                '2022-04-16': { dots: [one] },
+                '2022-04-17': { dots: [two] },
                 '2022-04-18': { disabled: true }
             }}
             // If disabledByDefault={true} dates flagged as not disabled will be enabled. Default = false
