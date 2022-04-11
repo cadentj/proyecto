@@ -58,7 +58,6 @@ export default function AgendaComponent() {
             // Specify how each item should be rendered in agenda
             renderItem={(item, firstItemInDay) => {
                 return <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                    
                     <Event name={item.name}/>
                 </View>;
             }}
