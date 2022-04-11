@@ -5,9 +5,6 @@ import React, { useRef } from 'react';
 import { View, Text } from 'react-native';
 import styleConstructor from './style';
 const Dot = ({ theme, marked, disabled, inactive, color, today, selected, day }) => {
-    if(day != undefined) {
-        console.log(day);
-    }
     const style = useRef(styleConstructor(theme));
     const dotStyle = [style.current.dot];
     if (marked) {

@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import MyTabs from './components/BottomNavBar';
 
 import { NativeBaseProvider, Text, Box, extendTheme } from 'native-base';
+import AppBar from './components/AppBar';
 
 
 
@@ -16,6 +17,7 @@ export default function App() {
   });
   return (
     <NativeBaseProvider theme={theme}>
+      <AppBar/>
       <NavigationContainer theme={theme} >
         <MyTabs />
       </NavigationContainer>
