@@ -1,5 +1,6 @@
 import React from "react";
 import { ScrollView, VStack, Center, useTheme, Heading, NativeBaseProvider } from "native-base";
+import Card from "./AnnouncementCard";
 
 export default function CardView() {
   const {
@@ -11,6 +12,9 @@ export default function CardView() {
       mb: "4",
       minW: "72"
     }}>
+        <VStack>
+            <Card/>
+        </VStack>
         <Center mt="3" mb="4">
           <Heading fontSize="xl">Cyan</Heading>
         </Center>
