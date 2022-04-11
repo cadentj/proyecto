@@ -3,15 +3,15 @@ import { Text, View } from 'react-native';
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import Event from './AgendaSchedule/AgendaEvent';
 import Date from './AgendaSchedule/AgendaDate';
-import {ChevronDownIcon, ChevronUpIcon} from "native-base";
+import { ChevronDownIcon, ChevronUpIcon } from "native-base";
 
-const one = {key: 'seven', color: 'red', day:1};
-const two = {key: 'seven', color: 'red', day:2};
-const three = {key: 'seven', color: 'red', day:3};
-const four = {key: 'seven', color: 'red', day:4};
-const five = {key: 'seven', color: 'red', day:5};
-const six = {key: 'seven', color: 'red', day:6};
-const seven = {key: 'seven', color: 'red', day:7};
+const one = { key: 'seven', color: 'red', day: 1 };
+const two = { key: 'seven', color: 'red', day: 2 };
+const three = { key: 'seven', color: 'red', day: 3 };
+const four = { key: 'seven', color: 'red', day: 4 };
+const five = { key: 'seven', color: 'red', day: 5 };
+const six = { key: 'seven', color: 'red', day: 6 };
+const seven = { key: 'seven', color: 'red', day: 7 };
 
 export default function AgendaComponent() {
 
@@ -22,8 +22,8 @@ export default function AgendaComponent() {
             // the value of date key has to be an empty array []. If there exists no value for date key it is
             // considered that the date in question is not yet loaded
             items={{
-                '2022-04-11': [{ name: 'item 1 - any js object'},{ name: 'item 1 - any js object'},{ name: 'item 1 - any js object'}],
-                '2022-04-12': [{ name: 'item 2 - any js object'}],
+                '2022-04-11': [{ name: 'item 1 - any js object' }, { name: 'item 1 - any js object' }, { name: 'item 1 - any js object' }],
+                '2022-04-12': [{ name: 'item 2 - any js object' }],
                 '2022-04-13': [],
                 '2022-04-14': [{ name: 'item 3 - any js object' }, { name: 'any js object' }],
                 '2022-04-15': [{ name: 'item 3 - any js object' }, { name: 'any js object' }],
@@ -58,7 +58,7 @@ export default function AgendaComponent() {
             // Specify how each item should be rendered in agenda
             renderItem={(item, firstItemInDay) => {
                 return <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                    <Event name={item.name}/>
+                    <Event name={item.name} />
                 </View>;
             }}
             // Specify how each date should be rendered. day can be undefined if the item is not first in that day
@@ -66,7 +66,7 @@ export default function AgendaComponent() {
                 for (i in day) {
                     if (i != undefined) {
                         const d = day.toString("dd");
-                        return <Date day={d}/> 
+                        return <Date day={d} />
                     }
                 }
             }}
@@ -112,10 +112,16 @@ export default function AgendaComponent() {
             refreshControl={null}
             // Agenda theme
             theme={{
-                agendaDayTextColor: 'yellow',
-                agendaDayNumColor: 'green',
-                agendaTodayColor: 'red',
-                agendaKnobColor: 'blue'
+                backgroundColor: '#121212',
+                calendarBackground: '#121212',
+                dayTextColor: '#E2E2E2',
+                header: '#1F1F1F',
+
+                textSectionTitleColor: '#E2E2E2',
+                textSectionTitleDisabledColor: '#E2E2E2',
+                todayTextColor: '#E2E2E2',
+                dayTextColor: '#E2E2E2',
+                textDisabledColor: '#d9e1e8',
             }}
             // Agenda container style
             style={{}}
