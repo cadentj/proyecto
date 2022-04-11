@@ -7,7 +7,7 @@ export default function CardView() {
     colors
   } = useTheme();
   return <Center>
-      <ScrollView maxW="300" h="80" _contentContainerStyle={{
+      <ScrollView h="80" _contentContainerStyle={{
       px: "20px",
       mb: "4",
       minW: "72"
@@ -20,7 +20,7 @@ export default function CardView() {
         </Center>
         <VStack flex="1">
           {Object.keys(colors.cyan).map((key, index) => {
-          if (index >= 1 && index <= 5) return <Center py="4" bg={`cyan.${key}`}>
+          if (index >= 1 && index <= 5) return <Center py="4" bg={`cyan.${key}`} key={key + "cyan"}>
                   {key}
                 </Center>;
         })}
@@ -29,8 +29,8 @@ export default function CardView() {
           <Heading fontSize="xl">Yellow</Heading>
         </Center>
         <VStack flex="1">
-          {Object.keys(colors.cyan).map((key, index) => {
-          if (index >= 1 && index <= 5) return <Center py="4" bg={`yellow.${key}`}>
+          {Object.keys(colors.yellow).map((key, index) => {
+          if (index >= 1 && index <= 5) return <Center py="4" bg={`yellow.${key}`} key={key + "yellow"}>
                   {key}
                 </Center>;
         })}
@@ -40,7 +40,7 @@ export default function CardView() {
         </Center>
         <VStack flex="1">
           {Object.keys(colors.violet).map((key, index) => {
-          if (index >= 1 && index <= 5) return <Center py="4" bg={`violet.${key}`}>
+          if (index >= 1 && index <= 5) return <Center py="4" bg={`violet.${key}`} key={key + "violet"}>
                   {key}
                 </Center>;
         })}

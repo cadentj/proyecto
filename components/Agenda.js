@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import Event from './AgendaSchedule/AgendaEvent';
 import Date from './AgendaSchedule/AgendaDate';
+import {ChevronDownIcon, ChevronUpIcon} from "native-base";
 
 const one = {key: 'seven', color: 'red', day:1};
 const two = {key: 'seven', color: 'red', day:2};
@@ -13,16 +14,19 @@ const six = {key: 'seven', color: 'red', day:6};
 const seven = {key: 'seven', color: 'red', day:7};
 
 export default function AgendaComponent() {
+
+    let isOpened = false;
     return (
         <Agenda
             // The list of items that have to be displayed in agenda. If you want to render item as empty date
             // the value of date key has to be an empty array []. If there exists no value for date key it is
             // considered that the date in question is not yet loaded
             items={{
-                '2022-04-09': [{ name: 'item 1 - any js object'}],
-                '2022-04-10': [{ name: 'item 2 - any js object', height: 80 }],
-                '2022-04-11': [],
-                '2022-04-12': [{ name: 'item 3 - any js object' }, { name: 'any js object' }],
+                '2022-04-11': [{ name: 'item 1 - any js object'},{ name: 'item 1 - any js object'},{ name: 'item 1 - any js object'}],
+                '2022-04-12': [{ name: 'item 2 - any js object'}],
+                '2022-04-13': [],
+                '2022-04-14': [{ name: 'item 3 - any js object' }, { name: 'any js object' }],
+                '2022-04-15': [{ name: 'item 3 - any js object' }, { name: 'any js object' }],
             }}
             // Callback that gets called when items for a certain month should be loaded (month became visible)
             loadItemsForMonth={month => {
@@ -31,6 +35,7 @@ export default function AgendaComponent() {
             // Callback that fires when the calendar is opened or closed
             onCalendarToggled={calendarOpened => {
                 console.log(calendarOpened);
+                isOpened = calendarOpened;
             }}
             // Callback that gets called on day press
             onDayPress={day => {
@@ -41,7 +46,7 @@ export default function AgendaComponent() {
                 console.log(day);
             }}
             // Initially selected day
-            selected={'2022-04-09'}
+            selected={'2022-04-11'}
             // Minimum date that can be selected, dates before minDate will be grayed out. Default = undefined
             minDate={'2022-01-10'}
             // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
@@ -53,13 +58,18 @@ export default function AgendaComponent() {
             // Specify how each item should be rendered in agenda
             renderItem={(item, firstItemInDay) => {
                 return <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                    
                     <Event name={item.name}/>
                 </View>;
             }}
             // Specify how each date should be rendered. day can be undefined if the item is not first in that day
             renderDay={(day, item) => {
-                const d = day != undefined ? day.toString("dd") : 69;
-                return <Date day={d}/>
+                for (i in day) {
+                    if (i != undefined) {
+                        const d = day.toString("dd");
+                        return <Date day={d}/> 
+                    }
+                }
             }}
             // Specify how empty date content with no items should be rendered
             renderEmptyDate={() => {
@@ -67,7 +77,7 @@ export default function AgendaComponent() {
             }}
             // Specify how agenda knob should look like
             renderKnob={() => {
-                return <View />;
+                return isOpened ? <ChevronUpIcon size="6" /> : <ChevronDownIcon size="6" />;
             }}
             // Specify what should be rendered instead of ActivityIndicator
 
