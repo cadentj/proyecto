@@ -5,13 +5,13 @@ import Event from './AgendaSchedule/AgendaEvent';
 import Date from './AgendaSchedule/AgendaDate';
 import { ChevronDownIcon, ChevronUpIcon } from "native-base";
 
-const one = { key: 'seven', color: 'red', day: 1 };
-const two = { key: 'seven', color: 'red', day: 2 };
-const three = { key: 'seven', color: 'red', day: 3 };
-const four = { key: 'seven', color: 'red', day: 4 };
-const five = { key: 'seven', color: 'red', day: 5 };
-const six = { key: 'seven', color: 'red', day: 6 };
-const seven = { key: 'seven', color: 'red', day: 7 };
+const one = { key: 'seven', color: '#CC0404', day: 1 };
+const two = { key: 'seven', color: '#CC0404', day: 2 };
+const three = { key: 'seven', color: '#CC0404', day: 3 };
+const four = { key: 'seven', color: '#CC0404', day: 4 };
+const five = { key: 'seven', color: '#CC0404', day: 5 };
+const six = { key: 'seven', color: '#CC0404', day: 6 };
+const seven = { key: 'seven', color: '#CC0404', day: 7 };
 
 export default function AgendaComponent() {
 
@@ -122,6 +122,8 @@ export default function AgendaComponent() {
                 todayTextColor: '#E2E2E2',
                 dayTextColor: '#E2E2E2',
                 textDisabledColor: '#d9e1e8',
+                
+                monthTextColor: 'white',
             }}
             // Agenda container style
             style={{}}
