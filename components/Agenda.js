@@ -57,7 +57,8 @@ export default function AgendaComponent() {
             futureScrollRange={2}
             // Specify how each item should be rendered in agenda
             renderItem={(item, firstItemInDay) => {
-                return <Event name={item.name} />;
+                console.log(firstItemInDay.name);
+                return <Event name={item.name} isFirst={firstItemInDay} />;
             }}
             // Specify how each date should be rendered. day can be undefined if the item is not first in that day
             renderDay={(day, item) => {
