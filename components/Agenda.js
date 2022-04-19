@@ -22,11 +22,11 @@ export default function AgendaComponent() {
             // the value of date key has to be an empty array []. If there exists no value for date key it is
             // considered that the date in question is not yet loaded
             items={{
-                '2022-04-11': [{ name: 'item 1 - any js object' }, { name: 'item 1 - any js object' }, { name: 'item 1 - any js object' }],
-                '2022-04-12': [{ name: 'item 2 - any js object' }],
+                '2022-04-11': [{ name: '1' }, { name: 'item 1 - any js object' }, { name: 'item 1 - any js object' }],
+                '2022-04-12': [{ name: '1' }],
                 '2022-04-13': [],
-                '2022-04-14': [{ name: 'item 3 - any js object' }, { name: 'any js object' }],
-                '2022-04-15': [{ name: 'item 3 - any js object' }, { name: 'any js object' }],
+                '2022-04-14': [{ name: '1' }, { name: 'any js object' }],
+                '2022-04-15': [{ name: '1' }, { name: 'any js object' }],
             }}
             // Callback that gets called when items for a certain month should be loaded (month became visible)
             loadItemsForMonth={month => {
@@ -57,9 +57,7 @@ export default function AgendaComponent() {
             futureScrollRange={2}
             // Specify how each item should be rendered in agenda
             renderItem={(item, firstItemInDay) => {
-                return <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                    <Event name={item.name} />
-                </View>;
+                return <Event name={item.name} />;
             }}
             // Specify how each date should be rendered. day can be undefined if the item is not first in that day
             renderDay={(day, item) => {
