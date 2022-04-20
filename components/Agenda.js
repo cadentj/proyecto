@@ -5,6 +5,9 @@ import Event from './AgendaSchedule/AgendaEvent';
 import Date from './AgendaSchedule/AgendaDate';
 import { ChevronDownIcon, ChevronUpIcon } from "native-base";
 
+import Day from './AgendaSchedule/AgendaDay';
+import Data from './ScheduleData.json';
+
 const one = { key: 'seven', color: '#CC0404', day: 1 };
 const two = { key: 'seven', color: '#CC0404', day: 2 };
 const three = { key: 'seven', color: '#CC0404', day: 3 };
@@ -13,9 +16,39 @@ const five = { key: 'seven', color: '#CC0404', day: 5 };
 const six = { key: 'seven', color: '#CC0404', day: 6 };
 const seven = { key: 'seven', color: '#CC0404', day: 7 };
 
+let d = {};
+
+
+
+function updateAgendaDates() {
+    const dat = Data;
+
+    for (let i in dat) {
+        let day = dat[i];
+        if (day == 1) {
+            d[i] = { dots: [one] }
+        } else if (day == 2) {
+            d[i] = { dots: [two] }
+        } else if (day == 3) {
+            d[i] = { dots: [three] }
+        } else if (day == 4) {
+            d[i] = { dots: [four] }
+        } else if (day == 5) {
+            d[i] = { dots: [five] }
+        } else if (day == 6) {
+            d[i] = { dots: [six] }
+        } else if (day == 7) {
+            d[i] = { dots: [seven] }
+        }
+    }
+}
+
 export default function AgendaComponent() {
 
     let isOpened = false;
+
+    updateAgendaDates();
+
     return (
         <Agenda
             // The list of items that have to be displayed in agenda. If you want to render item as empty date
@@ -57,7 +90,7 @@ export default function AgendaComponent() {
             futureScrollRange={2}
             // Specify how each item should be rendered in agenda
             renderItem={(item, firstItemInDay) => {
-                console.log(firstItemInDay.name);
+                Day();
                 return <Event name={item.name} isFirst={firstItemInDay} />;
             }}
             // Specify how each date should be rendered. day can be undefined if the item is not first in that day
@@ -92,15 +125,13 @@ export default function AgendaComponent() {
             showClosingKnob={true}
             // By default, agenda dates are marked if they have at least one item, but you can override this if needed
 
+
+
             markingType={'multi-dot'}
-            markedDates={{
-                '2022-04-11': { dots: [six] },
-                '2022-04-12': { dots: [seven] },
-                '2022-04-13': { dots: [one] },
-                '2022-04-14': { dots: [two] },
-                '2022-04-15': { dots: [three] },
-                '2022-04-16': { disabled: true }
-            }}
+
+            
+            markedDates={
+                d}
             // If disabledByDefault={true} dates flagged as not disabled will be enabled. Default = false
             disabledByDefault={false}
             // If provided, a standard RefreshControl will be added for "Pull to Refresh" functionality. Make sure to also set the refreshing prop correctly

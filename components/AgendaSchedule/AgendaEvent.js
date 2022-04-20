@@ -9,7 +9,7 @@ export default function Event(props) {
     margin = 0;
   }
 
-  return <Pressable mt="3"  w="250"  marginLeft={margin} onPress={() => navigation.navigate('MyModal', { params: { user: 'Caden' } })}>
+  return <Pressable mt="3"  w="275"  marginLeft={margin} onPress={() => navigation.navigate('MyModal', { params: { user: 'Caden' } })}>
     <Box justifyContent="center" alignItems="center" h="10" bg="indigo.500" rounded="md" shadow={3}>{props.name}</Box>
   </Pressable>;
 }
