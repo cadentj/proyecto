@@ -5,23 +5,28 @@ import { Center } from 'native-base';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import ModalScreen from '../components/AgendaSchedule/ModalScreen';
+import EventScreen from '../components/AgendaSchedule/EventScreen';
+
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 const RootStack = createStackNavigator();
 
 export default function HomeScreen() {
     return (
-        <RootStack.Navigator
-            screenOptions={{
-                headerShown: false,
-                presentation: "card",
-                contentStyle: { backgroundColor: "#ffffff" },
-            }}>
-            <RootStack.Group>
-                <RootStack.Screen name="Agenda" component={AgendaScreen} />
-            </RootStack.Group>
-            <RootStack.Group screenOptions={{ presentation: 'modal' }}>
-                <RootStack.Screen name="MyModal" component={ModalScreen} />
-            </RootStack.Group>
-        </RootStack.Navigator>
+        <SafeAreaView style={{flex:1}}>
+            <RootStack.Navigator
+                screenOptions={{
+                    presentation: "card",
+                    contentStyle: { backgroundColor: "#ffffff" },
+                }}>
+                <RootStack.Group>
+                    <RootStack.Screen name="Agenda" component={AgendaScreen} />
+                    <RootStack.Screen name="Event" component={EventScreen} />
+                </RootStack.Group>
+                <RootStack.Group>
+                    <RootStack.Screen name="MyModal" component={ModalScreen} />
+                </RootStack.Group>
+            </RootStack.Navigator>
+        </SafeAreaView>
     );
 }
