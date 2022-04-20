@@ -5,7 +5,6 @@ import Event from './AgendaSchedule/AgendaEvent';
 import Date from './AgendaSchedule/AgendaDate';
 import { ChevronDownIcon, ChevronUpIcon } from "native-base";
 
-import Day from './AgendaSchedule/AgendaDay';
 import Data from './ScheduleData.json';
 
 const one = { key: 'seven', color: '#CC0404', day: 1 };
@@ -16,29 +15,27 @@ const five = { key: 'seven', color: '#CC0404', day: 5 };
 const six = { key: 'seven', color: '#CC0404', day: 6 };
 const seven = { key: 'seven', color: '#CC0404', day: 7 };
 
-let d = {};
-
-
+let rotationDates = {};
 
 function updateAgendaDates() {
     const dat = Data;
 
     for (let i in dat) {
         let day = dat[i];
-        if (day == 1) {
-            d[i] = { dots: [one] }
-        } else if (day == 2) {
-            d[i] = { dots: [two] }
-        } else if (day == 3) {
-            d[i] = { dots: [three] }
-        } else if (day == 4) {
-            d[i] = { dots: [four] }
-        } else if (day == 5) {
-            d[i] = { dots: [five] }
-        } else if (day == 6) {
-            d[i] = { dots: [six] }
-        } else if (day == 7) {
-            d[i] = { dots: [seven] }
+        if (day == "one") {
+            rotationDates[i] = { dots: [one] }
+        } else if (day == "two") {
+            rotationDates[i] = { dots: [two] }
+        } else if (day == "three") {
+            rotationDates[i] = { dots: [three] }
+        } else if (day == "four") {
+            rotationDates[i] = { dots: [four] }
+        } else if (day == "five") {
+            rotationDates[i] = { dots: [five] }
+        } else if (day == "six") {
+            rotationDates[i] = { dots: [six] }
+        } else if (day == "seven") {
+            rotationDates[i] = { dots: [seven] }
         }
     }
 }
@@ -55,11 +52,11 @@ export default function AgendaComponent() {
             // the value of date key has to be an empty array []. If there exists no value for date key it is
             // considered that the date in question is not yet loaded
             items={{
-                '2022-04-11': [{ name: '1' }, { name: 'item 1 - any js object' }, { name: 'item 1 - any js object' }],
-                '2022-04-12': [{ name: '1' }],
+                '2022-04-11': [{ name: '1' }],
+                '2022-04-12': [{ name: '2' }],
                 '2022-04-13': [],
-                '2022-04-14': [{ name: '1' }, { name: 'any js object' }],
-                '2022-04-15': [{ name: '1' }, { name: 'any js object' }],
+                '2022-04-14': [{ name: '1' }],
+                '2022-04-15': [{ name: '1' }],
             }}
             // Callback that gets called when items for a certain month should be loaded (month became visible)
             loadItemsForMonth={month => {
@@ -90,8 +87,7 @@ export default function AgendaComponent() {
             futureScrollRange={2}
             // Specify how each item should be rendered in agenda
             renderItem={(item, firstItemInDay) => {
-                Day();
-                return <Event name={item.name} isFirst={firstItemInDay} />;
+                return <Event name={item.name} isFirst={firstItemInDay}/>;
             }}
             // Specify how each date should be rendered. day can be undefined if the item is not first in that day
             renderDay={(day, item) => {
@@ -131,7 +127,8 @@ export default function AgendaComponent() {
 
             
             markedDates={
-                d}
+                rotationDates
+            }
             // If disabledByDefault={true} dates flagged as not disabled will be enabled. Default = false
             disabledByDefault={false}
             // If provided, a standard RefreshControl will be added for "Pull to Refresh" functionality. Make sure to also set the refreshing prop correctly
