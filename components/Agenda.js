@@ -52,11 +52,11 @@ export default function AgendaComponent() {
             // the value of date key has to be an empty array []. If there exists no value for date key it is
             // considered that the date in question is not yet loaded
             items={{
-                '2022-04-11': [{ name: '1' }],
-                '2022-04-12': [{ name: '2' }],
+                '2022-04-11': [{ name: 'one' }],
+                '2022-04-12': [{ name: 'two' }],
                 '2022-04-13': [],
-                '2022-04-14': [{ name: '1' }],
-                '2022-04-15': [{ name: '1' }],
+                '2022-04-14': [{ name: 'three' }],
+                '2022-04-15': [{ name: 'four' }],
             }}
             // Callback that gets called when items for a certain month should be loaded (month became visible)
             loadItemsForMonth={month => {
