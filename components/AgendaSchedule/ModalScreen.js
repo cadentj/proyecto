@@ -6,12 +6,6 @@ export default function ModalScreen({ navigation, route }) {
     const props = route.params[Object.keys(route.params)[0]];
     const user = props[Object.keys(props)[0]];
 
-    React.useEffect(() => {
-        if (route.params?.user) {
-            console.log("yo");
-        }
-    }, [route.params?.post]);
-
     console.log(user);
 
     return (

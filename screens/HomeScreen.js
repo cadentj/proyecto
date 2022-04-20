@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Text, View, Button } from 'react-native';
-import AgendaComponent from '../components/Agenda.js';
+import AgendaScreen from './AgendaScreen';
 import { Center } from 'native-base';
 
 import { createStackNavigator } from '@react-navigation/stack';
@@ -17,7 +17,7 @@ export default function HomeScreen() {
                 contentStyle: { backgroundColor: "#ffffff" },
             }}>
             <RootStack.Group>
-                <RootStack.Screen name="Agenda" component={AgendaComponent} />
+                <RootStack.Screen name="Agenda" component={AgendaScreen} />
             </RootStack.Group>
             <RootStack.Group screenOptions={{ presentation: 'modal' }}>
                 <RootStack.Screen name="MyModal" component={ModalScreen} />
