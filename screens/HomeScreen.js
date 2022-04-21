@@ -21,7 +21,7 @@ export default function HomeScreen() {
                 }}>
                 <RootStack.Group>
                     <RootStack.Screen name="Agenda" component={AgendaScreen} />
-                    <RootStack.Screen name="Event" component={EventScreen} />
+                    <RootStack.Screen options={{headerShown: false}} name="Event" component={EventScreen} />
                 </RootStack.Group>
                 <RootStack.Group>
                     <RootStack.Screen name="MyModal" component={ModalScreen} />

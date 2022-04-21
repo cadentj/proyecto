@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { View, Button } from 'react-native';
+import { View } from 'react-native';
 
 import DropDownPicker from 'react-native-dropdown-picker';
 
-import { Divider, Flex, Box, Heading, Center, NativeBaseProvider, Text } from "native-base";
+import { Divider, Flex, Box, Button, Heading, Center, NativeBaseProvider, Text } from "native-base";
+
+import CalendarSelect from '../CalendarSelect';
 
 
 export default function EventScreen({ navigation, route }) {
@@ -24,7 +26,7 @@ export default function EventScreen({ navigation, route }) {
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'top' }}>
             <Text fontSize="3xl" my="2">This is an event!</Text>
             <Divider />
-            <Box my="5" mx="3">
+            <Box my="5" mx="10">
                 <DropDownPicker
                     open={open}
                     value={value}
@@ -32,10 +34,17 @@ export default function EventScreen({ navigation, route }) {
                     setOpen={setOpen}
                     setValue={setValue}
                     setItems={setItems}
-
+                    zIndex={100}
                 />
             </Box>
-            <Button onPress={() => navigation.goBack()} title="Dismiss" />
+            <Divider />
+            <Box alignItems="center" my="5">
+                <Button onPress={() => navigation.goBack()}>Click Me</Button>
+            </Box>
+            <Divider />
+            <Box w="100%">
+                <CalendarSelect />
+            </Box>
         </View>
     );
 }

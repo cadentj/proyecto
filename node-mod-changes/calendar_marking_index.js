@@ -58,6 +58,9 @@ const Marking = (props) => {
         return <View key={index} style={styles}/>;
     };
     const renderDot = (index, item) => {
+        if (typeof item == 'undefined') {
+            return null;
+        };
         const dotProps = extractComponentProps(Dot, props);
         let key = index;
         let color = dotColor;

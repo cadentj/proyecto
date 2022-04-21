@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { Text, View } from 'react-native';
-import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
+import { Agenda } from 'react-native-calendars';
 import Event from './AgendaSchedule/AgendaEvent';
 import Date from './AgendaSchedule/AgendaDate';
 import { ChevronDownIcon, ChevronUpIcon } from "native-base";
 
 import Data from './ScheduleData.json';
 
-const one = { key: 'seven', color: '#CC0404', day: 1 };
-const two = { key: 'seven', color: '#CC0404', day: 2 };
-const three = { key: 'seven', color: '#CC0404', day: 3 };
-const four = { key: 'seven', color: '#CC0404', day: 4 };
-const five = { key: 'seven', color: '#CC0404', day: 5 };
-const six = { key: 'seven', color: '#CC0404', day: 6 };
+const one = { key: 'one', color: '#CC0404', day: 1 };
+const two = { key: 'two', color: '#CC0404', day: 2 };
+const three = { key: 'three', color: '#CC0404', day: 3 };
+const four = { key: 'four', color: '#CC0404', day: 4 };
+const five = { key: 'five', color: '#CC0404', day: 5 };
+const six = { key: 'six', color: '#CC0404', day: 6 };
 const seven = { key: 'seven', color: '#CC0404', day: 7 };
 
 let rotationDates = {};
