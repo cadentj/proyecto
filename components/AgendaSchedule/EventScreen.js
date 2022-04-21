@@ -4,9 +4,11 @@ import { View } from 'react-native';
 
 import DropDownPicker from 'react-native-dropdown-picker';
 
-import { Divider, Flex, Box, Button, Heading, Center, NativeBaseProvider, Text } from "native-base";
+import { Divider, Flex, Box, Button, Heading, Center, NativeBaseProvider, Text, Input, ScrollView } from "native-base";
 
 import CalendarSelect from '../CalendarSelect';
+
+import Collapsible from 'react-native-collapsible/Collapsible';
 
 
 export default function EventScreen({ navigation, route }) {
@@ -21,9 +23,10 @@ export default function EventScreen({ navigation, route }) {
         { label: 'Banana', value: 'banana' }
     ]);
 
+    const [collapsed, setCollapsed] = useState(true);
 
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'top' }}>
+        <ScrollView contentContainerStyle={{ flex: 1, alignItems: 'center', justifyContent: 'top' }}>
             <Text fontSize="3xl" my="2">This is an event!</Text>
             <Divider />
             <Box my="5" mx="10">
@@ -39,12 +42,19 @@ export default function EventScreen({ navigation, route }) {
             </Box>
             <Divider />
             <Box alignItems="center" my="5">
-                <Button onPress={() => navigation.goBack()}>Click Me</Button>
+                <Input size="lg" mx="3" placeholder="Input" w="75%" maxWidth="300px" />
             </Box>
             <Divider />
             <Box w="100%">
-                <CalendarSelect />
+                <Button onPress={() => setCollapsed((collapsed) ? false : true)}>Calendar</Button>
+                <Collapsible collapsed={collapsed}>
+                    <CalendarSelect />
+                </Collapsible>
             </Box>
-        </View>
+            <Divider />
+            <Box alignItems="center" my="5">
+                <Button onPress={() => navigation.goBack()}>Click Me</Button>
+            </Box>
+        </ScrollView>
     );
 }
