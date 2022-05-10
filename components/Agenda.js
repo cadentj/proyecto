@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Text, View } from 'react-native';
 import { Agenda } from 'react-native-calendars';
 import Event from './AgendaSchedule/AgendaEvent';
-import Date from './AgendaSchedule/AgendaDate';
+import AgendaDate from './AgendaSchedule/AgendaDate';
 import { ChevronDownIcon, ChevronUpIcon } from "native-base";
 
 import Data from './ScheduleData.json';
@@ -40,11 +40,25 @@ function updateAgendaDates() {
     }
 }
 
+function getTodayDate() {
+    const date = new Date();
+    var day = date.getDay(); 
+    var month = date.getMonth() + 1; //months are zero-based
+
+    return [date.getFullYear(),
+        (month>9 ? '' : '0') + month,
+        (day>9 ? '' : '0') + day
+       ].join('-');
+    
+}
+
 export default function AgendaComponent() {
 
     let isOpened = false;
 
     updateAgendaDates();
+
+    const todayString = console.log(getTodayDate());
 
     return (
         <Agenda
@@ -76,7 +90,7 @@ export default function AgendaComponent() {
                 console.log(day);
             }}
             // Initially selected day
-            selected={'2022-04-11'}
+            selected={todayString}
             // Minimum date that can be selected, dates before minDate will be grayed out. Default = undefined
             minDate={'2022-01-10'}
             // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
@@ -94,7 +108,7 @@ export default function AgendaComponent() {
                 for (i in day) {
                     if (i != undefined) {
                         const d = day.toString("dd");
-                        return <Date day={d} />
+                        return <AgendaDate day={d} />
                     }
                 }
             }}

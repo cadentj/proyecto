@@ -11,12 +11,9 @@ export default function MyTabs() {
   return (
     <Tab.Navigator 
       screenOptions={{
-        header: ({navigation, route, options}) => {
-          <AppBar/>
-        }
       }}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Home" options={{headerShown: false}} component={HomeScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );
