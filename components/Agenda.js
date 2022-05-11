@@ -42,14 +42,14 @@ function updateAgendaDates() {
 
 function getTodayDate() {
     const date = new Date();
-    var day = date.getDate(); 
+    var day = date.getDate();
     var month = date.getMonth() + 1; //months are zero-based
 
     return [date.getFullYear(),
-        (month>9 ? '' : '0') + month,
-        (day>9 ? '' : '0') + day
-       ].join('-');
-    
+    (month > 9 ? '' : '0') + month,
+    (day > 9 ? '' : '0') + day
+    ].join('-');
+
 }
 
 export default function AgendaComponent() {
@@ -66,11 +66,11 @@ export default function AgendaComponent() {
             // the value of date key has to be an empty array []. If there exists no value for date key it is
             // considered that the date in question is not yet loaded
             items={{
-                '2022-04-11': [{ name: 'one' }],
-                '2022-04-12': [{ name: 'two' }],
-                '2022-04-13': [],
-                '2022-04-14': [{ name: 'three' }],
-                '2022-04-15': [{ name: 'four' }],
+                '2022-05-11': [{ name: 'one' }],
+                '2022-05-12': [{ name: 'two' }],
+                '2022-05-13': [],
+                '2022-05-14': [{ name: 'three' }],
+                '2022-05-15': [{ name: 'four' }],
             }}
             // Callback that gets called when items for a certain month should be loaded (month became visible)
             loadItemsForMonth={month => {
@@ -101,16 +101,12 @@ export default function AgendaComponent() {
             futureScrollRange={2}
             // Specify how each item should be rendered in agenda
             renderItem={(item, firstItemInDay) => {
-                return <Event name={item.name} isFirst={firstItemInDay}/>;
+                return <Event name={item.name} isFirst={firstItemInDay} />;
             }}
             // Specify how each date should be rendered. day can be undefined if the item is not first in that day
             renderDay={(day, item) => {
-                for (i in day) {
-                    if (i != undefined) {
-                        const d = day.toString("dd");
-                        return <AgendaDate day={d} />
-                    }
-                }
+                const d = day.toString("dd");
+                return <AgendaDate day={d} />
             }}
             // Specify how empty date content with no items should be rendered
             renderEmptyDate={() => {
@@ -139,7 +135,7 @@ export default function AgendaComponent() {
 
             markingType={'multi-dot'}
 
-            
+
             markedDates={
                 rotationDates
             }
@@ -163,7 +159,7 @@ export default function AgendaComponent() {
                 todayTextColor: '#E2E2E2',
                 dayTextColor: '#E2E2E2',
                 textDisabledColor: '#d9e1e8',
-                
+
                 monthTextColor: 'white',
             }}
             // Agenda container style
