@@ -5,7 +5,7 @@ import Event from './AgendaSchedule/AgendaEvent';
 import AgendaDate from './AgendaSchedule/AgendaDate';
 import { ChevronDownIcon, ChevronUpIcon } from "native-base";
 
-import Data from './ScheduleData.json';
+import Data from './data/ScheduleData.json';
 
 const one = { key: 'one', color: '#CC0404', day: 1 };
 const two = { key: 'two', color: '#CC0404', day: 2 };
@@ -42,7 +42,7 @@ function updateAgendaDates() {
 
 function getTodayDate() {
     const date = new Date();
-    var day = date.getDay(); 
+    var day = date.getDate(); 
     var month = date.getMonth() + 1; //months are zero-based
 
     return [date.getFullYear(),
@@ -58,7 +58,7 @@ export default function AgendaComponent() {
 
     updateAgendaDates();
 
-    const todayString = console.log(getTodayDate());
+    const todayString = getTodayDate();
 
     return (
         <Agenda

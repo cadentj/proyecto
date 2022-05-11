@@ -2,7 +2,7 @@ import * as React from "react";
 import { Pressable, VStack, Box, NativeBaseProvider } from "native-base";
 import { useNavigation } from '@react-navigation/native';
 
-import RotationData from '../SevenDayRotation.json';
+import RotationData from '../data/SevenDayRotation.json';
 
 
 function createDay(day) {
