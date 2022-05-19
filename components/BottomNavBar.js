@@ -13,7 +13,7 @@ export default function MyTabs() {
       screenOptions={{
       }}
     >
-      <Tab.Screen name="Home" options={{headerShown: false}} component={HomeScreen} />
+      <Tab.Screen options={{ headerShown: false }} name="Home" component={HomeScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );

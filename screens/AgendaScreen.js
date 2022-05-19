@@ -14,7 +14,7 @@ export default function AgendaScreen() {
     const navigation = useNavigation();
 
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1}} >
             <AgendaComponent />
             <ActionButton
                 buttonColor="rgba(231,76,60,1)"
