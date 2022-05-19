@@ -12,19 +12,22 @@ import Collapsible from 'react-native-collapsible/Collapsible';
 
 import AssignmentList from '../Assignment';
 
+import StudentData from '../data/ScheduleData.json'
+
 export default function ModalScreen({ navigation, route }) {
     const props = route.params[Object.keys(route.params)[0]];
     const user = props[Object.keys(props)[0]];
 
-    console.log(user);
-    const { name, carrier } = route.params;
+    const { name, carrierLetter, carrier} = route.params;
+    console.log(carrierLetter);
+
     return (
         <ScrollView contentContainerStyle={{ flex: 1, alignItems: 'center', justifyContent: 'top' }}>
         <Text fontSize="3xl" my="2">{carrier}</Text>
         <Divider/>
         <Text fontSize="xl" my="2">Assignments</Text>
         <Divider/>
-        <AssignmentList carrier={'A'}/>
+        <AssignmentList carrier={carrierLetter}/>
     </ScrollView>
     );
 }

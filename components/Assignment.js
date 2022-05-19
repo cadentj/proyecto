@@ -26,7 +26,8 @@ function createList(carrier) {
             position: "relative",
             flexDirection: 'row',
             justifyContent: "space-between",
-            py: "2"
+            py: "2",
+            mt:"2"
         };
         let tokenStyle = {
             bg: "rose.200",
@@ -40,7 +41,7 @@ function createList(carrier) {
 
         };
         let column = {
-            w: "15%",
+            w: "5%",
             flexWrap: "wrap",
         }
 
@@ -49,7 +50,7 @@ function createList(carrier) {
             <Flex {...column}>
                 
             </Flex>
-            <Flex style={{ w: "70%"}}>
+            <Flex style={{ w: "%", flexDirection:'row'}}>
                 {assignmentDate}: {assignmentName}
             </Flex>
             <Flex {...column}>

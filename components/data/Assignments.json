@@ -1,24 +1,27 @@
 {
     "A" : [
-        {"2022-04-14" : "assignment"},
-        {"2022-04-15" : "test"}
+        {"2022-05-18" : "Programming Project"},
+        {"2022-05-19" : "Robot Project"},
+        {"2022-05-20" : "Hashmap Activity"},
+        {"2022-05-21" : "Final Project"},
+        {"2022-05-22" : "Clean Coding Reading"}
     ],
-    "B" : {
-        
-    },
-    "C" : {
-        
-    },
-    "D" : {
-        
-    },
-    "E" : {
-        
-    },
-    "F" : {
-        
-    },
-    "G" : {
-        
-    }
+    "B" : [
+        {"2022-04-14" : "Physics Lab"}
+    ],
+    "C" : [
+        {"2022-04-14" : "English Paper"}
+    ],
+    "D" : [
+        {"2022-04-14" : "Proyecto De Espanol"}
+    ],
+    "E" : [
+        {"2022-04-14" : "DBQ Essay"}
+    ],
+    "F" : [
+        {"2022-04-14" : "Free!"}
+    ],
+    "G" : [
+        {"2022-04-14" : "BC FRQ Practice"}
+    ]
 }

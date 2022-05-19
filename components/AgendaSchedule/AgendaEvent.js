@@ -35,12 +35,14 @@ function createDay(day) {
       ml:"3"
 
     };
+    let carrierLetter;
     let event;
     if (carrierName.length <= 1) {
       dayStyle.bg = "transparent";
       dayStyle.borderColor ="red.400";
       dayStyle.borderWidth="1";
       dayStyle.borderStyle="dotted";
+      carrierLetter = carrierName;
       carrierName = StudentData[carrierName];
       event = <Box {...tokenStyle}>{Object.keys(carrier)[0]}</Box>;
     }
@@ -49,11 +51,11 @@ function createDay(day) {
       flexWrap:"wrap",
     }
 
-    return <Pressable mt="2" style={{ justifyContent: "center" }} onPress={() => navigation.navigate('MyModal', { name: 'Caden', carrier: carrierName})}>
+    return <Pressable mt="2" style={{ justifyContent: "center" }} onPress={() => navigation.navigate('MyModal', { name: 'Caden', carrierLetter: carrierLetter, carrier: carrierName})}>
       <Flex  {...dayStyle}>
 
         <Flex {...column}>
-          {event}
+          {event} 
         </Flex>
         <Flex style={{w:"70%", flexWrap:"wrap"}}>
           {carrierName}

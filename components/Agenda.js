@@ -7,13 +7,13 @@ import { Box, ChevronDownIcon, ChevronUpIcon, Divider } from "native-base";
 
 import Data from './data/ScheduleData.json';
 
-const one = { key: 'one', color: '#CC0404', day: 1 };
-const two = { key: 'two', color: '#CC0404', day: 2 };
-const three = { key: 'three', color: '#CC0404', day: 3 };
-const four = { key: 'four', color: '#CC0404', day: 4 };
-const five = { key: 'five', color: '#CC0404', day: 5 };
-const six = { key: 'six', color: '#CC0404', day: 6 };
-const seven = { key: 'seven', color: '#CC0404', day: 7 };
+const one = { key: 'one', color: '#e11d48', day: 1 };
+const two = { key: 'two', color: '#e11d48', day: 2 };
+const three = { key: 'three', color: '#e11d48', day: 3 };
+const four = { key: 'four', color: '#e11d48', day: 4 };
+const five = { key: 'five', color: '#e11d48', day: 5 };
+const six = { key: 'six', color: '#e11d48', day: 6 };
+const seven = { key: 'seven', color: '#e11d48', day: 7 };
 
 let rotationDates = {};
 
@@ -187,7 +187,7 @@ export default function AgendaComponent() {
                 textDayFontSize: 13,
                 dayTextColor: '#E2E2E2',
                 textDisabledColor: '#d9e1e8',
-                selectedDayBackgroundColor: "#FF0000",
+                selectedDayBackgroundColor: "#fda4af",
 
                 monthTextColor: 'white',
             }}
