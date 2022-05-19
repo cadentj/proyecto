@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 import { Agenda } from 'react-native-calendars';
 import Event from './AgendaSchedule/AgendaEvent';
 import AgendaDate from './AgendaSchedule/AgendaDate';
-import { ChevronDownIcon, ChevronUpIcon , Divider} from "native-base";
+import { Box, ChevronDownIcon, ChevronUpIcon, Divider } from "native-base";
 
 import Data from './data/ScheduleData.json';
 
@@ -47,19 +47,21 @@ function createAgendaItems() {
     for (let i in dat) {
         let day = dat[i];
         if (day == "one") {
-            agendaItems[i] = [{ name : "one" }]
+            agendaItems[i] = [{ name: "one" }]
         } else if (day == "two") {
-            agendaItems[i] = [{ name : "two" }]
+            agendaItems[i] = [{ name: "two" }]
         } else if (day == "three") {
-            agendaItems[i] = [{ name : "three" }]
+            agendaItems[i] = [{ name: "three" }]
         } else if (day == "four") {
-            agendaItems[i] = [{ name : "four" }]
+            agendaItems[i] = [{ name: "four" }]
         } else if (day == "five") {
-            agendaItems[i] = [{ name : "five" }]
+            agendaItems[i] = [{ name: "five" }]
         } else if (day == "six") {
-            agendaItems[i] = [{ name : "six" }]
+            agendaItems[i] = [{ name: "six" }]
         } else if (day == "seven") {
-            agendaItems[i] = [{ name : "seven" }]
+            agendaItems[i] = [{ name: "seven" }]
+        } else if (day == "") {
+            agendaItems[i] = []
         }
     }
 }
@@ -95,7 +97,7 @@ export default function AgendaComponent() {
             // considered that the date in question is not yet loaded
             items={
                 agendaItems
-            
+
             }
             // Callback that gets called when items for a certain month should be loaded (month became visible)
             loadItemsForMonth={month => {
@@ -126,17 +128,16 @@ export default function AgendaComponent() {
             futureScrollRange={2}
             // Specify how each item should be rendered in agenda
             renderItem={(item, firstItemInDay) => {
-                console.log("hello");
                 return <Event name={item.name} isFirst={firstItemInDay} />;
             }}
             // Specify how each date should be rendered. day can be undefined if the item is not first in that day
             renderDay={(day, item) => {
                 const d = day.toString("dd");
-                return <AgendaDate day={d} />
+                return <AgendaDate day={d} />;
             }}
             // Specify how empty date content with no items should be rendered
             renderEmptyDate={() => {
-                return <View />;
+                return <View></View>;
             }}
             // Specify how agenda knob should look like
             renderKnob={() => {
@@ -145,7 +146,7 @@ export default function AgendaComponent() {
             // Specify what should be rendered instead of ActivityIndicator
 
             renderEmptyData={() => {
-                return <View />;
+                return <Box style={{ bg: "red.500", h: 200 }}><Text>"HELLO"</Text></Box>;
             }}
             // Specify your item comparison function for increased performance
             rowHasChanged={(r1, r2) => {

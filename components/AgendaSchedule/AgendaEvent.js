@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Text, View } from 'react-native';
-import { Pressable, VStack, Box, NativeBaseProvider, Flex, Wrap } from "native-base";
+import { Pressable, VStack, Box, NativeBaseProvider, Flex, Wrap, Divider } from "native-base";
 import { useNavigation } from '@react-navigation/native';
 
 import RotationData from '../data/SevenDayRotation.json';
@@ -14,7 +14,7 @@ function createDay(day) {
   let schedule = ScheduleData.map((carrier) => {
     let carrierName = Object.keys(carrier)[0];
     let dayStyle = {
-      bg: "rose.500",
+      bg: "rose.700",
       alignItems: "center",
       rounded: "sm",
       shadow: 3,
@@ -25,19 +25,22 @@ function createDay(day) {
       py:"2"
     };
     let tokenStyle = {
-      bg: "rose.100",
+      bg: "rose.200",
       alignItems: "center",
       justifyContent: "center",
       h: "30",
       w: "30",
       rounded: "full",
       position: "relative",
-      ml:"5"
+      ml:"3"
 
     };
     let event;
     if (carrierName.length <= 1) {
-      dayStyle.bg = "rose.300";
+      dayStyle.bg = "transparent";
+      dayStyle.borderColor ="red.400";
+      dayStyle.borderWidth="1";
+      dayStyle.borderStyle="dotted";
       carrierName = StudentData[carrierName];
       event = <Box {...tokenStyle}>{Object.keys(carrier)[0]}</Box>;
     }
@@ -68,7 +71,8 @@ function createDay(day) {
 export default function Event(props) {
   const c = createDay(props.name);
 
-  return <VStack>
+  return <VStack my="5">
     {c}
+    
   </VStack>;
 }
