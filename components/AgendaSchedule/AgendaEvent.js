@@ -49,7 +49,7 @@ function createDay(day) {
       flexWrap:"wrap",
     }
 
-    return <Pressable mt="2" style={{ justifyContent: "center" }} onPress={() => navigation.navigate('MyModal', { name: 'Caden', carrier: 'APUSH'})}>
+    return <Pressable mt="2" style={{ justifyContent: "center" }} onPress={() => navigation.navigate('MyModal', { name: 'Caden', carrier: carrierName})}>
       <Flex  {...dayStyle}>
 
         <Flex {...column}>
@@ -71,7 +71,7 @@ function createDay(day) {
 export default function Event(props) {
   const c = createDay(props.name);
 
-  return <VStack my="5">
+  return <VStack mb="10">
     {c}
     
   </VStack>;

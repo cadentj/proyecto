@@ -10,6 +10,7 @@ import CalendarSelect from '../CalendarSelect';
 
 import Collapsible from 'react-native-collapsible/Collapsible';
 
+import AssignmentList from '../Assignment';
 
 export default function ModalScreen({ navigation, route }) {
     const props = route.params[Object.keys(route.params)[0]];
@@ -20,16 +21,10 @@ export default function ModalScreen({ navigation, route }) {
     return (
         <ScrollView contentContainerStyle={{ flex: 1, alignItems: 'center', justifyContent: 'top' }}>
         <Text fontSize="3xl" my="2">{carrier}</Text>
-        <Divider />
-        <Divider />
-        <Box alignItems="center" my="5">
-            <Input size="lg" mx="3" placeholder="Input" w="75%" maxWidth="300px" />
-        </Box>
-        <Divider />
-        <Divider />
-        <Box alignItems="center" my="5">
-            <Button onPress={() => navigation.goBack()}>Click Me</Button>
-        </Box>
+        <Divider/>
+        <Text fontSize="xl" my="2">Assignments</Text>
+        <Divider/>
+        <AssignmentList carrier={'A'}/>
     </ScrollView>
     );
 }

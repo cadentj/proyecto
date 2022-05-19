@@ -6,14 +6,15 @@ export default function styleConstructor(theme = {}) {
     const appStyle = { ...defaultStyle, ...theme };
     return StyleSheet.create({
         dot: {
-            width: 15,
-            height: 15,
-            marginTop: -6,
-            marginHorizontal: 1,
-            marginRight: -20,
+            width: 17,
+            height: 17,
+            marginTop: 0,
+            marginRight: -25,
             borderRadius: 16,
-            paddingLeft: 3,
+            paddingLeft: 4.5,
+            paddingTop:1.5,
             opacity: 0,
+            textDecorationColor: "#FFFFFF",
             ...appStyle.dotStyle
         },
         visibleDot: {

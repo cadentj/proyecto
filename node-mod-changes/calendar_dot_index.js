@@ -25,7 +25,7 @@ const Dot = ({ theme, marked, disabled, inactive, color, today, selected, day })
             dotStyle.push({ backgroundColor: color });
         }
     }
-    return <View style={dotStyle}><Text>{day}</Text></View>;
+    return <View style={dotStyle}><Text style={{color:"#FFFFFF", fontSize:12}}>{day}</Text></View>;
 };
 export default Dot;
 Dot.propTypes = {

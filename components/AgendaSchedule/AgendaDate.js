@@ -3,5 +3,5 @@ import { VStack, Center, NativeBaseProvider,Heading, Box,Divider} from "native-b
 import moment from "moment";
 
 export default function Date(props) {
-  return <Box w="20%"><Heading  size="md" mt="8" ml="5" >{props.day}</Heading></Box>
+  return <Box w="20%"><Heading  size="md" mt="3.5" ml="5" >{props.day}</Heading></Box>
 }
