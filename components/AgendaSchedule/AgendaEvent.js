@@ -49,7 +49,7 @@ function createDay(day) {
       flexWrap:"wrap",
     }
 
-    return <Pressable mt="2" style={{ justifyContent: "center" }} onPress={() => navigation.navigate('MyModal', { params: { user: 'Caden' } })}>
+    return <Pressable mt="2" style={{ justifyContent: "center" }} onPress={() => navigation.navigate('MyModal', { name: 'Caden', carrier: 'APUSH'})}>
       <Flex  {...dayStyle}>
 
         <Flex {...column}>

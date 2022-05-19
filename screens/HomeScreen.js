@@ -30,7 +30,7 @@ export default function HomeScreen() {
                             height:70,
                         },
                         headerRight: () => (
-                            <Icon onPress={() => setShowModal(true)} name="person-circle" size="40" color="red" style={{marginRight:10}}/>
+                            <Icon onPress={() => console.log("Icon Pressed")} name="person-circle" size="40" color="red" style={{marginRight:10}}/>
                             
                         ),
                     }}

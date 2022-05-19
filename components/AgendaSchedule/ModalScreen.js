@@ -16,10 +16,10 @@ export default function ModalScreen({ navigation, route }) {
     const user = props[Object.keys(props)[0]];
 
     console.log(user);
-
+    const { name, carrier } = route.params;
     return (
         <ScrollView contentContainerStyle={{ flex: 1, alignItems: 'center', justifyContent: 'top' }}>
-        <Text fontSize="3xl" my="2">This is an event!</Text>
+        <Text fontSize="3xl" my="2">{carrier}</Text>
         <Divider />
         <Divider />
         <Box alignItems="center" my="5">
