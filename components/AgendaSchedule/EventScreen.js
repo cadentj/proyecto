@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, Component } from 'react';
 import { View } from 'react-native';
 
 import DropDownPicker from 'react-native-dropdown-picker';
@@ -8,7 +8,24 @@ import { Divider, Flex, Box, Button, Heading, Center, NativeBaseProvider, Text, 
 
 import CalendarSelect from '../CalendarSelect';
 
-import Collapsible from 'react-native-collapsible/Collapsible';
+import Accordion from 'react-native-collapsible/Accordion';
+
+
+
+
+const SECTIONS = [
+    {
+        title: 'First',
+        content: 'Lorem ipsum...',
+    },
+    {
+        title: 'Second',
+        content: 'Lorem ipsum...',
+    },
+];
+
+
+
 
 
 export default function EventScreen({ navigation, route }) {
@@ -20,16 +37,55 @@ export default function EventScreen({ navigation, route }) {
     const [value, setValue] = useState(null);
     const [items, setItems] = useState([
         { label: 'Apple', value: 'apple' },
+        { label: 'Banana', value: 'banana' },
+        { label: 'Apple', value: 'apple' },
+        { label: 'Banana', value: 'banana' },
+        { label: 'Apple', value: 'apple' },
         { label: 'Banana', value: 'banana' }
     ]);
 
     const [collapsed, setCollapsed] = useState(true);
 
+    state = {
+        activeSections: [],
+    };
+
+    _renderSectionTitle = (section) => {
+        return (
+            <View style={styles.content}>
+                <Text>{section.content}</Text>
+            </View>
+        );
+    };
+
+    _renderHeader = (section) => {
+        return (
+            <View style={styles.header}>
+                <Text style={styles.headerText}>{section.title}</Text>
+            </View>
+        );
+    };
+
+    _renderContent = (section) => {
+        return (
+            <View style={styles.content}>
+                <Text>{section.content}</Text>
+            </View>
+        );
+    };
+
+    _updateSections = (activeSections) => {
+        this.setState({ activeSections });
+    };
+
+
     return (
         <ScrollView contentContainerStyle={{ flex: 1, alignItems: 'center', justifyContent: 'top' }}>
-            <Text fontSize="3xl" my="2">This is an event!</Text>
+            <Box alignItems="center" my="5">
+                <Input size="2xl" mx="3" placeholder="Task" w="75%" maxWidth="300px" variant="unstyled" />
+            </Box>
             <Divider />
-            <Box my="5" mx="10">
+            <Box my="5" mx="10" zIndex="2">
                 <DropDownPicker
                     open={open}
                     value={value}
@@ -37,22 +93,25 @@ export default function EventScreen({ navigation, route }) {
                     setOpen={setOpen}
                     setValue={setValue}
                     setItems={setItems}
-                    zIndex={100}
                 />
             </Box>
             <Divider />
-            <Box alignItems="center" my="5">
-                <Input size="lg" mx="3" placeholder="Input" w="75%" maxWidth="300px" />
-            </Box>
-            <Divider />
-            <Box w="100%">
-                <Button onPress={() => setCollapsed((collapsed) ? false : true)}>Calendar</Button>
+            <Box w="100%" zIndex="1">
+                {/* <Button onPress={() => setCollapsed((collapsed) ? false : true)}>Calendar</Button>
                 <Collapsible collapsed={collapsed}>
                     <CalendarSelect />
-                </Collapsible>
+                </Collapsible> */}
+                <Accordion
+                    sections={SECTIONS}
+                    activeSections={this.state.activeSections}
+                    renderSectionTitle={this._renderSectionTitle}
+                    renderHeader={this._renderHeader}
+                    renderContent={this._renderContent}
+                    onChange={this._updateSections}
+                />
             </Box>
             <Divider />
-            <Box alignItems="center" my="5">
+            <Box alignItems="center" my="5" zIndex="1">
                 <Button onPress={() => navigation.goBack()}>Click Me</Button>
             </Box>
         </ScrollView>
