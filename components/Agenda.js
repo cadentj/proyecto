@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 import { Agenda } from 'react-native-calendars';
 import Event from './AgendaSchedule/AgendaEvent';
 import AgendaDate from './AgendaSchedule/AgendaDate';
-import { ChevronDownIcon, ChevronUpIcon } from "native-base";
+import { ChevronDownIcon, ChevronUpIcon , Divider} from "native-base";
 
 import Data from './data/ScheduleData.json';
 
@@ -40,6 +40,30 @@ function updateAgendaDates() {
     }
 }
 
+let agendaItems = {}
+function createAgendaItems() {
+    const dat = Data;
+
+    for (let i in dat) {
+        let day = dat[i];
+        if (day == "one") {
+            agendaItems[i] = [{ name : "one" }]
+        } else if (day == "two") {
+            agendaItems[i] = [{ name : "two" }]
+        } else if (day == "three") {
+            agendaItems[i] = [{ name : "three" }]
+        } else if (day == "four") {
+            agendaItems[i] = [{ name : "four" }]
+        } else if (day == "five") {
+            agendaItems[i] = [{ name : "five" }]
+        } else if (day == "six") {
+            agendaItems[i] = [{ name : "six" }]
+        } else if (day == "seven") {
+            agendaItems[i] = [{ name : "seven" }]
+        }
+    }
+}
+
 function getTodayDate() {
     const date = new Date();
     var day = date.getDate();
@@ -52,11 +76,15 @@ function getTodayDate() {
 
 }
 
+
 export default function AgendaComponent() {
 
     let isOpened = false;
 
     updateAgendaDates();
+    createAgendaItems();
+
+    console.log(agendaItems);
 
     const todayString = getTodayDate();
 
@@ -65,13 +93,10 @@ export default function AgendaComponent() {
             // The list of items that have to be displayed in agenda. If you want to render item as empty date
             // the value of date key has to be an empty array []. If there exists no value for date key it is
             // considered that the date in question is not yet loaded
-            items={{
-                '2022-05-11': [{ name: 'one' }],
-                '2022-05-12': [{ name: 'two' }],
-                '2022-05-13': [],
-                '2022-05-14': [{ name: 'three' }],
-                '2022-05-15': [{ name: 'four' }],
-            }}
+            items={
+                agendaItems
+            
+            }
             // Callback that gets called when items for a certain month should be loaded (month became visible)
             loadItemsForMonth={month => {
                 console.log('trigger items loading');
@@ -101,6 +126,7 @@ export default function AgendaComponent() {
             futureScrollRange={2}
             // Specify how each item should be rendered in agenda
             renderItem={(item, firstItemInDay) => {
+                console.log("hello");
                 return <Event name={item.name} isFirst={firstItemInDay} />;
             }}
             // Specify how each date should be rendered. day can be undefined if the item is not first in that day
