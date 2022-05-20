@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Calendar } from 'react-native-calendars';
 import { ChevronLeftIcon, ChevronRightIcon } from "native-base";
 
-let rotationDates = {};
+import Data from './data/ScheduleData.json';
 
 const one = { key: 'one', color: '#CC0404', day: 1 };
 const two = { key: 'two', color: '#CC0404', day: 2 };
@@ -13,7 +13,35 @@ const five = { key: 'five', color: '#CC0404', day: 5 };
 const six = { key: 'six', color: '#CC0404', day: 6 };
 const seven = { key: 'seven', color: '#CC0404', day: 7 };
 
-export default function CalendarSelect() {  
+let rotationDates = {};
+
+function updateAgendaDates() {
+    const dat = Data;
+
+    for (let i in dat) {
+        let day = dat[i];
+        if (day == "one") {
+            rotationDates[i] = { dots: [one] }
+        } else if (day == "two") {
+            rotationDates[i] = { dots: [two] }
+        } else if (day == "three") {
+            rotationDates[i] = { dots: [three] }
+        } else if (day == "four") {
+            rotationDates[i] = { dots: [four] }
+        } else if (day == "five") {
+            rotationDates[i] = { dots: [five] }
+        } else if (day == "six") {
+            rotationDates[i] = { dots: [six] }
+        } else if (day == "seven") {
+            rotationDates[i] = { dots: [seven] }
+        }
+    }
+}
+
+export default function CalendarSelect(props) {  
+
+    updateAgendaDates();
+
     return (
         <Calendar
             // Initially visible month. Default = now
@@ -24,7 +52,7 @@ export default function CalendarSelect() {
             maxDate={'2022-05-30'}
             // Handler which gets executed on day press. Default = undefined
             onDayPress={day => {
-                console.log('selected day', day);
+                props.selectDate(Object.values(day)[4]);
             }}
             // Handler which gets executed on day long press. Default = undefined
             onDayLongPress={day => {
@@ -49,11 +77,9 @@ export default function CalendarSelect() {
             // day from another month that is visible in calendar page. Default = false
             disableMonthChange={false}
             // If firstDay=1 week starts from Monday. Note that dayNames and dayNamesShort should still start from Sunday
-            firstDay={1}
+            firstDay={0}
             // Hide day names. Default = false
             hideDayNames={false}
-            // Show week numbers to the left. Default = false
-            showWeekNumbers={true}
             // Handler which gets executed when press arrow icon left. It receive a callback can go back month
             onPressArrowLeft={subtractMonth => subtractMonth()}
             // Handler which gets executed when press arrow icon right. It receive a callback can go next month
@@ -72,12 +98,7 @@ export default function CalendarSelect() {
 
             markingType={'multi-dot'}
             markedDates={{
-                '2022-04-11': { dots: [six] },
-                '2022-04-12': { dots: [seven] },
-                '2022-04-13': { dots: [one] },
-                '2022-04-14': { dots: [two] },
-                '2022-04-15': { dots: [three] },
-                '2022-04-16': { disabled: true }
+                rotationDates
             }}
 
             // Enable the option to swipe between months. Default = false
@@ -94,6 +115,7 @@ export default function CalendarSelect() {
                 todayTextColor: '#E2E2E2',
                 dayTextColor: '#E2E2E2',
                 textDisabledColor: '#d9e1e8',
+                selectedDayBackgroundColor:"#FFFFFF",
                 
                 monthTextColor: 'white',
             }}

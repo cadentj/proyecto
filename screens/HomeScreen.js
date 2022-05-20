@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useState } from "react";
-import { Text, View, Button } from 'react-native';
+import { Text, View } from 'react-native';
 import AgendaScreen from './AgendaScreen';
-import { Center } from 'native-base';
+import { Center, Box, Button } from 'native-base';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import ModalScreen from '../components/AgendaSchedule/ModalScreen';
@@ -27,26 +27,28 @@ export default function HomeScreen() {
                 <RootStack.Screen
                     options={{
                         headerStyle: {
-                            height:70,
+                            height: 70,
                         },
                         headerRight: () => (
-                            <Icon onPress={() => console.log("Icon Pressed")} name="person-circle" size="40" color="red" style={{marginRight:10}}/>
-                            
+                            <Icon onPress={() => console.log("Icon Pressed")} name="person-circle" size="40" color="red" style={{ marginRight: 10 }} />
+
                         ),
                     }}
                     name="Agenda"
                     component={AgendaScreen}
                 />
                 <RootStack.Screen options={{
+                    headerTitle: "",
                     headerStyle: {
-                        height:70,
+                        height: 70,
+                        
                     },
                 }} name="Event" component={EventScreen} />
             </RootStack.Group>
             <RootStack.Group>
                 <RootStack.Screen options={{
                     headerStyle: {
-                        height:70,
+                        height: 70,
                     },
                 }} name="MyModal" component={ModalScreen} />
             </RootStack.Group>

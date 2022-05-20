@@ -1,10 +1,6 @@
 {
     "A" : [
-        {"2022-05-18" : "Programming Project"},
-        {"2022-05-19" : "Robot Project"},
-        {"2022-05-20" : "Hashmap Activity"},
-        {"2022-05-21" : "Final Project"},
-        {"2022-05-22" : "Clean Coding Reading"}
+        {"2022-05-18" : "Programming Project"}
     ],
     "B" : [
         {"2022-04-14" : "Physics Lab"}
